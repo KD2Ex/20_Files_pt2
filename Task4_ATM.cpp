@@ -5,21 +5,7 @@ using namespace std;
 
 const int BILLS[] = {100, 200, 500, 1000, 2000, 5000};
 
-int atm_statement(ifstream &file, string path = "atm.txt") {
-    if (!file.is_open()) {
-        file.open(path, ios::binary);
-    }
-    int billsCount = 0;
-    string str = "\n";
-    while (!file.eof()) {
-        billsCount++;
-        getline(file,str);
-    }
-    return billsCount;
-}
-
 void countAllBills(int bills[], int * billsCount) {
-    //billsCount[6] = {0, 0, 0, 0, 0, 0};
     for (int i = 0; i < 1000; ++i) {
         switch (bills[i]) {
             case 5000:
@@ -118,7 +104,9 @@ int main() {
 
             atm_out.open("atm.txt");
             for (int i = 0; i < 1000; ++i) {
-                if (billsInAtm[i] == 0 || billsInAtm[i] > 5000) {
+                if (billsInAtm[i] == 0 || (billsInAtm[i] != BILLS[0] && billsInAtm[i] != BILLS[1]
+                && billsInAtm[i] != BILLS[2] && billsInAtm[i] != BILLS[3] && billsInAtm[i] != BILLS[4]
+                && billsInAtm[i] != BILLS[5])) {
                     continue;
                 }
                 atm_out << billsInAtm[i] << "\n";
