@@ -75,6 +75,10 @@ bool isWithdrawalPossible(int sum, int * bills) {
 int main() {
     ofstream atm_out("atm.txt", ios::app);
     ifstream atm_in("atm.txt", ios::binary);
+    if (!atm_out.is_open() || !atm_in.is_open()) {
+        cout << "Could not open the file\n";
+        return 0;
+    }
     char operation;
     cin >> operation;
 
@@ -103,6 +107,10 @@ int main() {
             atm_out.close();
 
             atm_out.open("atm.txt");
+            if (!atm_out.is_open()) {
+                cout << "Could not open the file\n";
+                return 0;
+            }
             for (int i = 0; i < 1000; ++i) {
                 if (billsInAtm[i] == 0 || (billsInAtm[i] != BILLS[0] && billsInAtm[i] != BILLS[1]
                 && billsInAtm[i] != BILLS[2] && billsInAtm[i] != BILLS[3] && billsInAtm[i] != BILLS[4]

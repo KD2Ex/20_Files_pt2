@@ -5,6 +5,10 @@ using namespace std;
 int main() {
     ifstream river("river.txt");
     ofstream bucket("bucket.txt", ios::app);
+    if (!river.is_open() || !bucket.is_open()) {
+        cout << "Could not open file\n";
+        return 0;
+    }
     string fishType;
     int count = 0;
 
